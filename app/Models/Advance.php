@@ -34,7 +34,7 @@ class Advance extends Model
 
     public function patient()
     {
-        return $this->belongsTo(Registration::class, 'pt_id', 'id')->select(['id','salutation','name']);
+        return $this->belongsTo(Registration::class, 'pt_id', 'id')->select(['id','salutation','name','uhid']);
     }
 
 }

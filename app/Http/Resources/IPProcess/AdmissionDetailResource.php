@@ -15,7 +15,8 @@ class AdmissionDetailResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'txtID' => $this->pt_id,
+            'txtID' => $this->patient->uhid,
+            // 'txtID' => $this->pt_id,
             'name' => $this->patient->name,
             'age' => $this->patient->age,
             'gender' => $this->patient->gender,

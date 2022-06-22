@@ -27,16 +27,17 @@ class PrintoutController extends Controller
         return response(base64_encode($view))->header('Content-Type', 'text/plain');
     }
 
-    public function generateOPBillReceipt(int $id): Response
+    public function generateOPBillReceipt(int $id,string $billType): Response
     {
         $data = OPBill::findOrFail($id);
-
+        $data['type'] = $billType;
         return response(view('printouts.op_bill', compact('data')))->header('Content-Type', 'application/pdf');
     }
 
-    public function generateIPBillReceipt(int $id): Response
+    public function generateIPBillReceipt(int $id,string $billType): Response
     {
         $data = IPBill::findOrFail($id);
+        $data['type'] = $billType;
 
         return response(view('printouts.ip_bill', compact('data')))->header('Content-Type', 'application/pdf');
     }

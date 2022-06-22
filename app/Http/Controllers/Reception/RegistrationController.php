@@ -32,19 +32,21 @@ class RegistrationController extends Controller
     {
         $data = json_decode($request->getContent());
         $count = Registration::where([
-            'name' => $data->name,
-            'contact_no' => $data->contactNo
+            // 'name' => $data->name,
+            // 'contact_no' => $data->contactNo
+            'uhid' => $data->uhid,
         ])->count();
 
         if ($count > 0) {
             return [
                 'status' => false,
-                'message' => 'Patient Details already Exists'
+                'message' => 'UHID already Exists'
             ];
         }
 
         $registration = Registration::create([
             'salutation' => $data->salutation,
+            'uhid' => $data->uhid,
             'name' => $data->name,
             'age' => $data->age,
             'gender' => $data->gender,

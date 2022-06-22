@@ -18,7 +18,7 @@ class OPRegistrationController extends Controller
      */
     public function index(): array
     {
-        $ids = Registration::select(['id'])->pluck('id')->sortDesc()->values();
+        $ids = Registration::get(['uhid','id'])->sortDesc()->values();
         $consultants = Doctor::select(['id', 'name'])
         ->where('status', '=', 'Active')
         ->get()

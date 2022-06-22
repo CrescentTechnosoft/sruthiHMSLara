@@ -51,10 +51,10 @@ class AdmissionService
 
     public function getPID(): object
     {
-        return Registration::select('id')->orderBy('id', 'desc')
+        return Registration::select('id','uhid')->orderBy('id', 'desc')
             ->whereNotIn('id', Ward::select('pt_id')->whereNotNull('pt_id'))
             ->limit(250)
-            ->pluck('id');
+            ->get(['id','uhid']);
     }
 
     public function getWards(): \Illuminate\Database\Eloquent\Collection

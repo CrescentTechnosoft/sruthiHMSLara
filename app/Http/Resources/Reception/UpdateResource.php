@@ -16,6 +16,7 @@ class UpdateResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'uhid' => $this->uhid,
             'salutation' => $this->salutation,
             'name' => $this->name,
             'age' => $this->age,

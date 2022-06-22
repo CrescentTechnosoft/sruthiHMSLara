@@ -28,7 +28,7 @@ class OPBillingController extends Controller
     public function index(): array
     {
         return [
-            'pid' => Registration::orderBy('id', 'desc')->limit(250)->pluck('id'),
+            'pid' => Registration::orderBy('id', 'desc')->limit(250)->get(['id','uhid']),
             'cons' => DB::table('doctors')
                 ->where('status', 'Active')
                 ->orderBy('name')
@@ -78,9 +78,9 @@ class OPBillingController extends Controller
 
     public function getIds(): \Illuminate\Support\Collection
     {
-        return Registration::select('id')->orderBy('id', 'desc')
+        return Registration::select(['id','uhid'])->orderBy('id', 'desc')
             ->limit(250)
-            ->pluck('id');
+            ->get(['id','uhid']);
     }
 
     public function searchPatients(Request $request): PatientResourceCollection

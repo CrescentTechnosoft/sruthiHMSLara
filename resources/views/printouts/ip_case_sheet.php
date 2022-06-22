@@ -21,10 +21,10 @@ $pdf->cell(50, 5, ! is_null($data->ward) ? ": " . $data->ward->ward : ':', 0, 1)
 
 // New Line
 $pdf->setFont('texgyrepagella', 'B', 10);
-$pdf->cell(25, 5, "Patient ID", 0, 0);
+$pdf->cell(35, 5, "Patient ID / UHID", 0, 0);
 
 $pdf->setFont('texgyrepagella', '', 10);
-$pdf->cell(30, 5, ': ' . $data->pt_id, 0, 0);
+$pdf->cell(30, 5, ': ' . $data->pt_id .'/ '. $data->patient->uhid, 0, 0);
 
 $pdf->setFont('texgyrepagella', 'B', 12);
 

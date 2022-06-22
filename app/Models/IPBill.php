@@ -39,7 +39,7 @@ class IPBill extends Model
 
     public function patient()
     {
-        return $this->belongsTo(Registration::class, 'pt_id', 'id')->select(['id','salutation','name','age','gender']);
+        return $this->belongsTo(Registration::class, 'pt_id', 'id')->select(['id','salutation','name','age','gender','uhid']);
     }
 
     public function admission()

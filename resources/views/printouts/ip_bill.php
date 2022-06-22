@@ -8,6 +8,8 @@ $room_name=$data->billDetails
 ->fees_type;
 
 $pdf = new IPBill();
+$pdf->type = $data->type;
+
 $pdf->aliasNbPages();
 $pdf->addPage();
 $pdf->rect(10, $pdf->getY(), 190, 30);

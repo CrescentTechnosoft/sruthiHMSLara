@@ -21,6 +21,7 @@ class PatientsListController extends Controller
         return Registration::select([
             'id',
             'uuid',
+            'uhid',
             'salutation',
             'name',
             'age',
@@ -29,6 +30,7 @@ class PatientsListController extends Controller
         ])->when($search !== '', function ($query) use ($search) {
             $query->where('id', $search)
                 ->orWhere('name', 'like', $search . '%')
+                ->orWhere('uhid', 'like', $search . '%')
                 ->orWhere('contact_no', 'like', $search . '%');
         })
             ->orderBy('id', 'desc')
@@ -40,6 +42,7 @@ class PatientsListController extends Controller
         $patient = Registration::find($id);
         return [
             'id' => $id,
+            'uhid' => $patient->uhid,
             'name' => $patient->salutation . '.' . $patient->name,
             'age' => $patient->age,
             'gender' => $patient->gender,

@@ -53,13 +53,13 @@ class OPBill extends Model
     public function registration(): BelongsTo
     {
         return $this->belongsTo(Registration::class, 'pt_id', 'id')
-        ->select(['id','salutation', 'name', 'age', 'gender', 'contact_no', 'address']);
+        ->select(['id','salutation', 'name', 'age', 'gender', 'contact_no', 'address','uhid']);
     }
 
     public function patient(): BelongsTo
     {
         return $this->belongsTo(Registration::class, 'pt_id', 'id')
-        ->select(['id','salutation', 'name', 'age', 'gender', 'contact_no', 'address']);
+        ->select(['id','salutation', 'name', 'age', 'gender', 'contact_no', 'address','uhid']);
     }
 
     public function user(): BelongsTo

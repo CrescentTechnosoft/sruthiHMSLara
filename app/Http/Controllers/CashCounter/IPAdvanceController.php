@@ -72,17 +72,17 @@ class IPAdvanceController extends Controller
         $current_advance = (float) $data->advance;
         $total_advance = $previous_advance + $current_advance;
 
-        if ($treatment_cost < $total_advance) {
-            return [
-                'status' => false,
-                'message' => 'Advance is higher than Treatment Cost'
-            ];
-        }
+        // if ($treatment_cost < $total_advance) {
+        //     return [
+        //         'status' => false,
+        //         'message' => 'Advance is higher than Treatment Cost'
+        //     ];
+        // }
         $advance_no = Advance::where('ip_id', $ip_id)->max('advance_no') ?? 0;
-
+        $ptId = explode('/',$data->ptId);
         Advance::create([
             'ip_id' => $ip_id,
-            'pt_id' => $data->ptId,
+            'pt_id' => (int)$ptId[0],
             'advance_no' => $advance_no + 1,
             'amount' => $current_advance,
             'pay_type' => $data->payType,

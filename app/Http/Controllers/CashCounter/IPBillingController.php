@@ -65,12 +65,13 @@ class IPBillingController extends Controller
         $request_data = \json_decode($request->getContent());
         $data = $request_data->data;
         $treatments = $request_data->treatments;
-
+        $ptId = explode('/',$data->ptId);
+        // dd((int)$ptId[0]);
         IPBill::create([
             'year' => $bill_year,
             'bill_no' => $bill_no + 1,
             'ip_id' => $data->ipNo,
-            'pt_id' => $data->ptId,
+            'pt_id' => (int)$ptId[0],
             'total' => $data->total,
             'advance_paid' => $data->advance,
             'discount' => $data->discount,
@@ -94,7 +95,7 @@ class IPBillingController extends Controller
             $bill_details[] = [
                 'bill_id' => $bill_id,
                 'ip_id' => $data->ipNo,
-                'pt_id' => $data->ptId,
+                'pt_id' => (int)$ptId[0],
                 'department' => $treatment->dept,
                 'category' => $treatment->category,
                 'fees_id' => $treatment->feesId,
@@ -155,12 +156,12 @@ class IPBillingController extends Controller
         ]);
 
         $bill_details = [];
-
+        $ptId = explode('/',$data->ptId);
         foreach ($treatments as $treatment) {
             $bill_details[] = [
                 'bill_id' => $id,
                 'ip_id' => $data->tIP,
-                'pt_id' => $data->ptId,
+                'pt_id' => (int)$ptId[0],
                 'department' => $treatment->dept,
                 'category' => $treatment->category,
                 'fees_id' => $treatment->feesId,

@@ -4,18 +4,19 @@ use ViewClasses\OPBill;
 
 // Instanciation of inherited class
 $pdf = new OPBill();
+$pdf->type = $data->type;
+
 $pdf->aliasNbPages();
 
 $pdf->addPage();
 $pdf->count = $data->billDetails->count();
-
 $pdf->rect(10, $pdf->getY(), 190, 19);
 $pdf->ln(3);
 $pdf->setFont('times', 'B', 10);
 $pdf->cell(25, 5, 'UHID', 0, 0);
 
 $pdf->setFont('times', '', 10);
-$pdf->cell(100, 5, ': ' . $data->pt_id, 0, 0);
+$pdf->cell(100, 5, ': ' . $data->registration->uhid, 0, 0);
 
 $pdf->setFont('times', 'B', 10);
 $pdf->cell(25, 5, 'Bill No', 0, 0);

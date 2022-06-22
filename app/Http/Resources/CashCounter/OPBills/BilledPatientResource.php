@@ -16,7 +16,7 @@ class BilledPatientResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'pt_id' => $this->pt_id,
+            'pt_id' => $this->pt_id .'/ '.$this->patient->uhid,
             'name' => $this->patient->salutation . '.' . $this->patient->name,
             'age' => $this->patient->age,
             'gender' => $this->patient->gender,

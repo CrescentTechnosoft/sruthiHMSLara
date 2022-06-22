@@ -18,6 +18,7 @@ class Registration extends Model
     protected $fillable = [
         'salutation',
         'uuid',
+        'uhid',
         'name',
         'age',
         'gender',

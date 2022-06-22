@@ -32,11 +32,11 @@ $pdf->setFont('times', '', 10);
 $pdf->cell(100, 5, ': ' . $data->patient->age . ' / ' . $data->patient->gender, 0, 0);
 
 $pdf->setFont('times', 'B', 10);
-$pdf->cell(27, 5, 'Patient ID', 0, 0);
+$pdf->cell(30, 5, 'Patient ID / UHID', 0, 0);
 
 $pdf->setFont('times', '', 10);
 
-$pdf->cell(50, 5, ': ' . $data->patient->id, 0, 1);
+$pdf->cell(50, 5, ': ' . $data->patient->id .'/'.$data->patient->uhid, 0, 1);
 
 //New Line
 $pdf->setFont('times', 'B', 10);
