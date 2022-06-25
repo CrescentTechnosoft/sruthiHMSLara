@@ -13,7 +13,7 @@ class IPBill extends McTable
             // $this->image(config('paths.logo'), 12, 6, 30, 20);
             $this->setFont('times', 'B', 14);
             $this->setY(7);
-            $this->cell(190, 6, config('about.name'), 0, 0, 'C');
+            $this->cell(190, 6, 'SRUTHI SPECIALITY HOSPITAL', 0, 0, 'C');
             $this->rect(10, 5, 190, 22);
 
             $this->setFont('times', 'B', 12);
@@ -35,7 +35,7 @@ class IPBill extends McTable
             $this->cell(190, 5, 'IP BILL', 0, 1, 'C');
             $this->setXY(150, 6);
             $this->setFont('times', '', 9);
-            $address = "P-5/1, Bye Pass Road,Opp - To Vasan Eye Care.Ambur";
+            $address = "P-5/1, Bye Pass Road,\nOpp - To Vasan Eye Care.Ambur\n Contact : 9566638438";
             $this->multiCell(52, 5, $address);
             $this->ln(6);
         }

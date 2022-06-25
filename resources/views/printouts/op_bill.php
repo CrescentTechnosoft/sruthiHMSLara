@@ -97,9 +97,13 @@ if (floatval($data->due) > 0) {
     $pdf->cell(23, 5, 'Due Amount', 0, 0);
     $pdf->cell(32, 5, ': Rs.' . $data->due, 0, 1);
 }
-
+if($data->type === 'hospital'){
+$billedBy = 'Sruthi Speciality Hospital';
+}else{
+ $billedBy = 'Sruthi Clinic';
+}
 $pdf->ln(6);
-$pdf->cell(144, 5, 'Billed By : ' . $data->user->name, 0, 0);
+$pdf->cell(144, 5, 'Billed By : ' . $billedBy , 0, 0);
 $pdf->cell(20, 5, 'Cashier', 0, 0);
 //
 // $pdf->isFinished = true;
